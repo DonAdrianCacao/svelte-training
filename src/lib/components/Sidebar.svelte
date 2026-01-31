@@ -2,43 +2,43 @@
     import { sidebarOpen } from "$lib/stores/sidebar.js";
     import { sidebarMenu } from "$lib/data/sidebarMenu.js";
 
-    // Track which parent menus are expanded
+    // Track open parent menus
     let expanded = new Set();
 
-    // Toggle a parent menu open/close
     function toggleExpand(item, index) {
-        if (!item.children) return; // Do nothing if no children
+        if (!item.children) return;
 
         if (expanded.has(index)) expanded.delete(index);
         else expanded.add(index);
-        expanded = new Set(expanded); // trigger reactivity
+        expanded = new Set(expanded);
     }
 </script>
 
 <nav
-    class="bg-gray-100 border-r border-gray-300 flex flex-col transition-all duration-300 h-screen"
+    class="bg-gray-50 border-r border-gray-300 flex flex-col transition-all duration-300 h-screen shadow-sm"
     class:w-64={$sidebarOpen}
     class:w-16={!$sidebarOpen}
 >
-    <!-- Header/Toggle -->
     <div
-        class="p-3 border-b border-gray-200 flex items-center"
+        class="p-4 border-b border-gray-300 flex items-center bg-white"
         class:flex-row={$sidebarOpen}
         class:flex-col={!$sidebarOpen}
         class:justify-between={$sidebarOpen}
         class:gap-2={!$sidebarOpen}
     >
-        <span class="font-bold text-gray-700 overflow-hidden whitespace-nowrap">
+        <span
+            class="font-bold text-blue-800 tracking-tight overflow-hidden whitespace-nowrap"
+        >
             {$sidebarOpen ? "PAYROLL SYSTEM" : "P"}
         </span>
         <button
             on:click={() => sidebarOpen.update((v) => !v)}
-            class="p-1.5 hover:bg-gray-200 rounded-md transition-colors flex items-center justify-center"
+            class="p-1.5 hover:bg-gray-100 rounded border border-gray-200 transition-colors flex items-center justify-center outline outline-1 outline-transparent hover:outline-gray-300"
             aria-label={$sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 transition-transform duration-300"
+                class="h-5 w-5 transition-transform duration-300 text-gray-600"
                 class:rotate-180={!$sidebarOpen}
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -52,44 +52,46 @@
         </button>
     </div>
 
-    <!-- Menu -->
-    <ul class="flex-1 flex flex-col mt-2">
+    <ul class="flex-1 flex flex-col mt-4 divide-y divide-gray-100">
         {#each sidebarMenu as item, index}
-            <li>
-                <!-- Parent menu -->
+            <li class="group">
                 <button
-                    class="w-full text-left flex items-center p-2 hover:bg-gray-200 cursor-pointer transition-colors"
+                    class="w-full text-left flex items-center p-3 hover:bg-blue-50 cursor-pointer transition-colors border-l-4 border-transparent hover:border-blue-500"
                     class:justify-center={!$sidebarOpen}
                     on:click={() => toggleExpand(item, index)}
                     title={!$sidebarOpen ? item.name : ""}
                 >
-                    <span class="text-xl">{item.icon}</span>
+                    <span
+                        class="text-xl group-hover:scale-110 transition-transform"
+                        >{item.icon}</span
+                    >
 
                     {#if $sidebarOpen}
-                        <span class="ml-3 font-medium">{item.name}</span>
+                        <span class="ml-3 font-medium text-gray-700"
+                            >{item.name}</span
+                        >
 
                         {#if item.children}
-                            <span class="ml-auto"
+                            <span class="ml-auto text-xs text-gray-400"
                                 >{expanded.has(index) ? "▲" : "▼"}</span
                             >
                         {/if}
                     {/if}
                 </button>
 
-                <!-- Children menu -->
                 {#if item.children && expanded.has(index) && $sidebarOpen}
-                    <ul class="ml-8 flex flex-col">
+                    <ul class="bg-gray-50 py-1">
                         {#each item.children as child}
                             <li>
-                                <button
-                                    class="w-full text-left p-2 hover:bg-gray-200 cursor-pointer flex items-center rounded-md transition-colors"
-                                    title={!$sidebarOpen ? child.name : ""}
+                                <a
+                                    href={child.route}
+                                    class="w-full text-left pl-12 p-2 hover:text-blue-600 text-gray-600 text-sm flex items-center transition-colors"
                                 >
-                                    <span class="text-lg">{child.icon}</span>
-                                    {#if $sidebarOpen}
-                                        <span class="ml-2">{child.name}</span>
-                                    {/if}
-                                </button>
+                                    <span class="mr-2 text-xs opacity-50"
+                                        >•</span
+                                    >
+                                    <span>{child.name}</span>
+                                </a>
                             </li>
                         {/each}
                     </ul>
