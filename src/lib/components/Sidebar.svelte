@@ -40,10 +40,29 @@
             </svg>
         </button>
         
-        <div class="flex mt-16" class:justify-center={!$sidebarOpen}>
-            <span class="font-bold tracking-tight overflow-hidden whitespace-nowrap text-white text-lg">
-                {$sidebarOpen ? "PaySync" : "P"}
+        <div class="flex flex-col mt-4">
+        {#if $sidebarOpen}
+            <!-- Left-aligned Logo + PaySync -->
+            <div class="flex flex-col items-start">
+
+            <!-- Circle Logo -->
+            <div class="w-10 h-10 rounded-full bg-white text-[#1f1b4b] flex items-center justify-center font-bold text-lg mb-2">
+                L
+            </div>
+
+            <!-- PaySync -->
+            <span class="font-medium tracking-tight overflow-hidden whitespace-nowrap text-2xl">
+                <span class="text-white">Pay</span><span class="[color:#818cf8]">Sync</span>
             </span>
+            </div>
+        {:else}
+            <!-- Center the P -->
+            <div class="flex justify-center">
+            <span class="font-bold tracking-tight overflow-hidden whitespace-nowrap text-white text-lg">
+                P
+            </span>
+            </div>
+        {/if}
         </div>
 
         <div class="w-full h-px bg-white my-2"></div>
@@ -53,7 +72,7 @@
                 U
             </div>
             {#if $sidebarOpen}
-                <span class="text-white font-bold whitespace-nowrap">User</span>
+                <span class="text-white font-medium whitespace-nowrap">User</span>
             {/if}
         </div>
 
