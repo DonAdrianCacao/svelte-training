@@ -2,7 +2,6 @@
     import { sidebarOpen } from "$lib/stores/sidebar.js";
     import { sidebarMenu } from "$lib/data/sidebarMenu.js";
 
-    // Track open parent menus
     let expanded = new Set();
 
     function toggleExpand(item, index) {
@@ -15,30 +14,20 @@
 </script>
 
 <nav
-    class="bg-gray-50 border-r border-gray-300 flex flex-col transition-all duration-300 h-screen shadow-sm"
+    class="flex flex-col h-screen transition-all duration-300 shadow-sm"
     class:w-64={$sidebarOpen}
     class:w-16={!$sidebarOpen}
+    style="background-color: #1f1b4b;"
 >
-    <div
-        class="p-4 border-b border-gray-300 flex items-center bg-white"
-        class:flex-row={$sidebarOpen}
-        class:flex-col={!$sidebarOpen}
-        class:justify-between={$sidebarOpen}
-        class:gap-2={!$sidebarOpen}
-    >
-        <span
-            class="font-bold text-blue-800 tracking-tight overflow-hidden whitespace-nowrap"
-        >
-            {$sidebarOpen ? "PaySync" : "P"}
-        </span>
+    <div class="relative flex flex-col p-4 gap-2">
         <button
-            on:click={() => sidebarOpen.update((v) => !v)}
-            class="p-1.5 hover:bg-gray-100 rounded border border-gray-200 transition-colors flex items-center justify-center outline outline-1 outline-transparent hover:outline-gray-300"
+            on:click={() => sidebarOpen.update(v => !v)}
+            class="absolute top-2 right-2 p-1.5 hover:bg-gray-700 rounded border border-gray-600 transition-colors flex items-center justify-center outline outline-1 outline-transparent hover:outline-gray-400"
             aria-label={$sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 transition-transform duration-300 text-gray-600"
+                class="h-5 w-5 transition-transform duration-300 text-white"
                 class:rotate-180={!$sidebarOpen}
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -50,47 +39,55 @@
                 />
             </svg>
         </button>
+        
+        <div class="flex mt-16" class:justify-center={!$sidebarOpen}>
+            <span class="font-bold tracking-tight overflow-hidden whitespace-nowrap text-white text-lg">
+                {$sidebarOpen ? "PaySync" : "P"}
+            </span>
+        </div>
+
+        <div class="w-full h-px bg-white my-2"></div>
+
+        <div class="flex items-center gap-2 mt-2" class:justify-center={!$sidebarOpen}>
+            <div class="w-8 h-8 flex-shrink-0 rounded-full bg-white text-[#1f1b4b] flex items-center justify-center font-bold text-base">
+                U
+            </div>
+            {#if $sidebarOpen}
+                <span class="text-white font-bold whitespace-nowrap">User</span>
+            {/if}
+        </div>
+
+        <div class="w-full h-px bg-white my-2"></div>
     </div>
 
-    <ul class="flex-1 flex flex-col mt-4 divide-y divide-gray-100">
+    <ul class="flex-1 flex flex-col mt-4">
         {#each sidebarMenu as item, index}
             <li class="group">
                 <button
-                    class="w-full text-left flex items-center p-3 hover:bg-blue-50 cursor-pointer transition-colors border-l-4 border-transparent hover:border-blue-500"
+                    class="w-full text-left flex items-center p-3 cursor-pointer border-l-4 border-transparent text-white font-medium transition-colors duration-200 rounded hover:bg-[#4e47e5] hover:text-white text-base"
                     class:justify-center={!$sidebarOpen}
                     on:click={() => toggleExpand(item, index)}
                     title={!$sidebarOpen ? item.name : ""}
                 >
-                    <span
-                        class="text-xl group-hover:scale-110 transition-transform"
-                        >{item.icon}</span
-                    >
-
                     {#if $sidebarOpen}
-                        <span class="ml-3 font-medium text-gray-700"
-                            >{item.name}</span
-                        >
-
+                        <span class="ml-3">{item.name}</span>
                         {#if item.children}
-                            <span class="ml-auto text-xs text-gray-400"
-                                >{expanded.has(index) ? "▲" : "▼"}</span
-                            >
+                            <span class="ml-auto text-xs text-gray-300">{expanded.has(index) ? "▲" : "▼"}</span>
                         {/if}
+                    {:else}
+                        <span class="text-xl group-hover:scale-110 transition-transform">{item.icon}</span>
                     {/if}
                 </button>
-
+                
                 {#if item.children && expanded.has(index) && $sidebarOpen}
-                    <ul class="bg-gray-50 py-1">
+                    <ul class="bg-[#1f1a4b] py-2 flex flex-col gap-5">
                         {#each item.children as child}
                             <li>
                                 <a
                                     href={child.route}
-                                    class="w-full text-left pl-12 p-2 hover:text-blue-600 text-gray-600 text-sm flex items-center transition-colors"
+                                    class="inline-flex w-[calc(100%-3.5rem)] ml-12 mr-2 px-3 py-2 text-white text-base font-medium items-center transition-all duration-200 rounded-full hover:bg-[#4e47e5]"
                                 >
-                                    <span class="mr-2 text-xs opacity-50"
-                                        >•</span
-                                    >
-                                    <span>{child.name}</span>
+                                    {child.name}
                                 </a>
                             </li>
                         {/each}

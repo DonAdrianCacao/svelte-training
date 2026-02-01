@@ -4,7 +4,7 @@
   // White borders for the Header
   const th = "bg-[#4F47E4] text-white border-b border-r border-white whitespace-nowrap px-5 py-1 [transform:translateZ(0)]";
   // Gray borders for the Data
-  const td = "bg-white border-b border-r border-gray-200 whitespace-nowrap px-6 py-3 text-sm [transform:translateZ(0)]";
+  const td = "bg-white border-b border-r border-gray-200 whitespace-nowrap px-6 py-3 text-xl [transform:translateZ(0)]";
 
   // make Employee ID and Employee Name sticky
   const stickyID = "sticky left-0 z-50 min-w-[150px] w-[150px] border-l";
@@ -61,11 +61,41 @@
 </script>
 
 <div class="w-full p-4">
+
+  <div class="flex items-center gap-3 mb-4">
+    <button
+      class="px-4 py-2 text-sm font-medium bg-[#4F47E4] text-white rounded-full hover:bg-[#3f38c9] active:scale-[0.98]"
+    >
+      ☰
+    </button>
+
+    <button
+      class="px-4 py-2 text-sm font-medium bg-[#4F47E4] text-white rounded-full hover:bg-[#3f38c9] active:scale-[0.98]">
+      ↑↓
+    </button>   
+
+    <div class="relative w-[260px]">
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
+     </svg>
+     </span>
+     
+    <input
+    type="text"
+    placeholder="Search employee..."
+    class="w-full pl-4 pl-10 py-2 border border-gray-300 rounded-full text-sm
+           focus:outline-none focus:ring-2 focus:ring-[#4F47E4]"
+    />
+    </div>
+
+  </div>
+
   <div 
     use:dragScroll
     class="relative overflow-x-auto select-none rounded-[25px] border-t border-l border-gray-300
-           [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-  >
+           [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
     <table class="min-w-full border-separate border-spacing-0">
         <thead>
         <tr class="text-center">
