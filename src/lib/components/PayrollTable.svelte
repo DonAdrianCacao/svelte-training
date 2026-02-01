@@ -1,12 +1,15 @@
 <script>
   import { payrollData } from "$lib/data/payrollData.js";
 
-  // White borders for the Header
+  // Header design
   const th =
     "bg-[#4F47E4] text-white border-b border-r border-white whitespace-nowrap px-5 py-1 [transform:translateZ(0)]";
-  // Gray borders for the Data
+  // Body design
   const td =
     "bg-white border-b border-r border-gray-200 whitespace-nowrap px-6 py-3 text-xl [transform:translateZ(0)]";
+  // Footer design
+  const totalTd =
+    "bg-[#4F47E4] text-white border-b border-r border-white whitespace-nowrap px-6 py-3 text-xl [transform:translateZ(0)]";
 
   // make Employee ID and Employee Name sticky
   const stickyID = "sticky left-0 z-50 min-w-[150px] w-[150px] border-l";
@@ -59,6 +62,25 @@
       },
     };
   }
+
+  // List of keys we want to sum up
+  const numericKeys = [
+    "initialPay", "holidayPay", "overtimePay", "bonuses", 
+    "tardiness", "absences", "grossPay", "sss", 
+    "philhealth", "withholdingTax", "netPay"
+  ];
+
+  // Reactive calculation: runs once when payrollData changes
+  $: totals = payrollData.reduce((acc, row) => {
+    numericKeys.forEach(key => {
+      acc[key] = (acc[key] || 0) + (Number(row[key]) || 0);
+    });
+    return acc;
+  }, {});
+
+  // Optional: Helper to format numbers to 2 decimal places or currency
+  const formatNum = (num) => (num || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 </script>
 
 <div class="w-full p-2">
@@ -211,6 +233,31 @@
             <td class={td}>{row.netPay}</td>
           </tr>
         {/each}
+
+        <!-- TOTAL Row at the Bottom -->
+        <tr class="text-center font-bold">
+          <td
+            class="sticky left-0 z-50 bg-[#4F47E4] text-white border-b border-r border-white text-xl text-right px-6 py-3"
+            colspan="2"
+          >
+            TOTAL
+          </td>
+
+          <td class={totalTd}></td>
+          <td class={totalTd}></td>
+
+          <td class={totalTd}>{formatNum(totals.initialPay)}</td>
+          <td class={totalTd}>{formatNum(totals.holidayPay)}</td>
+          <td class={totalTd}>{formatNum(totals.overtimePay)}</td>
+          <td class={totalTd}>{formatNum(totals.bonuses)}</td>
+          <td class={totalTd}>{formatNum(totals.tardiness)}</td>
+          <td class={totalTd}>{formatNum(totals.absences)}</td>
+          <td class={totalTd}>{formatNum(totals.grossPay)}</td>
+          <td class={totalTd}>{formatNum(totals.sss)}</td>
+          <td class={totalTd}></td> <td class={totalTd}>{formatNum(totals.philhealth)}</td>
+          <td class={totalTd}>{formatNum(totals.withholdingTax)}</td>
+          <td class={totalTd}>{formatNum(totals.netPay)}</td>
+        </tr>
       </tbody>
     </table>
   </div>

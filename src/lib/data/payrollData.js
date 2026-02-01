@@ -14,7 +14,8 @@ export const payrollData = [
     philhealth: 1200,
     grossPay: 58900,
     withholdingTax: 8835,
-    netPay: 46265
+    netPay: 46265,
+    total: 9999
   },
   {
     employeeId: "002",
@@ -31,7 +32,8 @@ export const payrollData = [
     philhealth: 1440,
     grossPay: 71500,
     withholdingTax: 10725,
-    netPay: 57335
+    netPay: 57335,
+    total: 12345
   },
   {
     employeeId: "003",
@@ -48,7 +50,8 @@ export const payrollData = [
     philhealth: 1320,
     grossPay: 67900,
     withholdingTax: 10185,
-    netPay: 54315
+    netPay: 54315,
+    total: 7777
   },
   {
     employeeId: "004",
@@ -65,7 +68,8 @@ export const payrollData = [
     philhealth: 1152,
     grossPay: 55400,
     withholdingTax: 8310,
-    netPay: 43690
+    netPay: 43690,
+    total: 5555
   },
   {
     employeeId: "005",
@@ -82,6 +86,7 @@ export const payrollData = [
     philhealth: 1488,
     grossPay: 72300,
     withholdingTax: 10845,
-    netPay: 58167
+    netPay: 58167,
+    total: 8888
   }
 ];
