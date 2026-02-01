@@ -1,9 +1,9 @@
 export const payrollData = [
   {
     employeeId: "001",
-    employeeName: "John Doe",
-    department: "IT",
-    jobRole: "Software Developer",
+    employeeName: "Don Adrian Cacao",
+    department: "CS",
+    jobRole: "Web Developer",
     initialPay: 50000,
     holidayPay: 2500,
     overtimePay: 1200,
@@ -18,9 +18,9 @@ export const payrollData = [
   },
   {
     employeeId: "002",
-    employeeName: "Jane Smith",
-    department: "HR",
-    jobRole: "HR Manager",
+    employeeName: "Ralph Geo Santos",
+    department: "CS",
+    jobRole: "Web Developer",
     initialPay: 60000,
     holidayPay: 3000,
     overtimePay: 1500,
