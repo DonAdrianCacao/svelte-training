@@ -29,7 +29,7 @@
         <span
             class="font-bold text-blue-800 tracking-tight overflow-hidden whitespace-nowrap"
         >
-            {$sidebarOpen ? "PAYROLL SYSTEM" : "P"}
+            {$sidebarOpen ? "PaySync" : "P"}
         </span>
         <button
             on:click={() => sidebarOpen.update((v) => !v)}
