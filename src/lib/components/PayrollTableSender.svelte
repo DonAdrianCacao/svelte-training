@@ -6,10 +6,10 @@
     "bg-[#4F47E4] text-white border-b border-r border-white whitespace-nowrap px-5 py-1 [transform:translateZ(0)]";
   // Body design
   const td =
-    "bg-white border-b border-r border-gray-200 whitespace-nowrap px-6 py-3 text-xl [transform:translateZ(0)]";
+    "bg-white border-b border-r border-gray-200 whitespace-nowrap px- py-3 text-base [transform:translateZ(0)]";
   // Footer design
   const totalTd =
-    "bg-[#4F47E4] text-white border-b border-r border-white whitespace-nowrap px-6 py-3 text-xl [transform:translateZ(0)]";
+    "bg-[#4F47E4] text-white border-b border-r border-white whitespace-nowrap px-6 py-3 text-base [transform:translateZ(0)]";
 
   // make Employee ID and Employee Name sticky
   const stickyID = "sticky left-0 z-50 min-w-[150px] w-[150px] border-l";
@@ -66,7 +66,7 @@
   // List of keys we want to sum up
   const numericKeys = [
     "initialPay", "holidayPay", "overtimePay", "bonuses", 
-    "tardiness", "absences", "grossPay", "sss", 
+    "tardiness", "absences", "grossPay", "sss", "pagIbig",
     "philhealth", "withholdingTax", "netPay"
   ];
 
@@ -151,8 +151,40 @@
           class="w-full pl-10 pr-4 py-2 border border-[#3f38c9] rounded-full text-sm outline-none"
         />
       </div>
+
+      <!-- Payroll Info -->
+      
+      <div class="mt-2 flex items-center gap-12">
+        <div class="flex flex-col">
+          <span class="font-bold">Pay Frequency</span>
+          <span class="text-gray-800">Semi-monthly</span>
+        </div>
+
+        <!-- Pay Period -->
+        <div class="flex flex-col">
+          <span class="font-bold">Pay Period</span>
+          <span class="text-gray-800">Jan 1 - 15 2026</span>
+        </div>
+
+        <!-- Total Cash Required -->
+        <div class="flex flex-col">
+          <span class="font-bold">Total Cash Required</span>
+          <span class="text-gray-800">₱ 529,600.00</span>
+        </div>
+
+        <!-- Status -->
+        <div class="flex flex-col">
+          <span class="font-bold">Status</span>
+          <span class="flex items-center gap-2 text-gray-800">
+            <span class="w-3 h-3 rounded-full bg-gray-500"></span>
+            Draft
+          </span>
+        </div>
+      </div>
     </div>
   </div>
+
+
   <!-- Payroll Table Wrapper -->
   <div
     use:dragScroll
@@ -195,7 +227,7 @@
           <th class={th}>TARDINESS</th>
           <th class={th}>ABSENCES</th>
           <th class={th}>SSS</th>
-          <th class={th}></th>
+          <th class={th}>PAG-IBIG</th>
           <th class={th}>PHILHEALTH</th>
         </tr>
       </thead>
@@ -227,7 +259,7 @@
             <td class={td}>{row.absences}</td>
             <td class={td}>{row.grossPay}</td>
             <td class={td}>{row.sss}</td>
-            <td class={td}></td>
+            <td class={td}>{row.pagIbig}</td>
             <td class={td}>{row.philhealth}</td>
             <td class={td}>{row.withholdingTax}</td>
             <td class={td}>{row.netPay}</td>
@@ -254,7 +286,8 @@
           <td class={totalTd}>{formatNum(totals.absences)}</td>
           <td class={totalTd}>{formatNum(totals.grossPay)}</td>
           <td class={totalTd}>{formatNum(totals.sss)}</td>
-          <td class={totalTd}></td> <td class={totalTd}>{formatNum(totals.philhealth)}</td>
+          <td class={totalTd}>{formatNum(totals.pagIbig)}</td> 
+          <td class={totalTd}>{formatNum(totals.philhealth)}</td>
           <td class={totalTd}>{formatNum(totals.withholdingTax)}</td>
           <td class={totalTd}>{formatNum(totals.netPay)}</td>
         </tr>

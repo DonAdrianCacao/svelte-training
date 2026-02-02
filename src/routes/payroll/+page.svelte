@@ -1,7 +1,7 @@
 <script>
-  import PayrollTable from "$lib/components/PayrollTable.svelte";
+  import PayrollTableSender from "$lib/components/PayrollTableSender.svelte";
 </script>
 
 <div>
-  <PayrollTable />
+  <PayrollTableSender />
 </div>

@@ -12,10 +12,10 @@ export const payrollData = [
     absences: 800,
     sss: 2250,
     philhealth: 1200,
+    pagIbig: 150,
     grossPay: 58900,
     withholdingTax: 8835,
-    netPay: 46265,
-    total: 9999
+    netPay: 46265
   },
   {
     employeeId: "002",
@@ -30,10 +30,10 @@ export const payrollData = [
     absences: 0,
     sss: 2700,
     philhealth: 1440,
+    pagIbig: 150,
     grossPay: 71500,
     withholdingTax: 10725,
-    netPay: 57335,
-    total: 12345
+    netPay: 57335
   },
   {
     employeeId: "003",
@@ -48,10 +48,10 @@ export const payrollData = [
     absences: 400,
     sss: 2475,
     philhealth: 1320,
+    pagIbig: 150,
     grossPay: 67900,
     withholdingTax: 10185,
-    netPay: 54315,
-    total: 7777
+    netPay: 54315
   },
   {
     employeeId: "004",
@@ -66,10 +66,10 @@ export const payrollData = [
     absences: 600,
     sss: 2160,
     philhealth: 1152,
+    pagIbig: 150,
     grossPay: 55400,
     withholdingTax: 8310,
-    netPay: 43690,
-    total: 5555
+    netPay: 43690
   },
   {
     employeeId: "005",
@@ -84,9 +84,99 @@ export const payrollData = [
     absences: 500,
     sss: 2790,
     philhealth: 1488,
+    pagIbig: 150,
     grossPay: 72300,
     withholdingTax: 10845,
-    netPay: 58167,
-    total: 8888
+    netPay: 58167
+  },
+  {
+    employeeId: "006",
+    employeeName: "Anna Cruz",
+    department: "Human Resources",
+    jobRole: "HR Officer",
+    initialPay: 45000,
+    holidayPay: 2250,
+    overtimePay: 900,
+    bonuses: 3500,
+    tardiness: 200,
+    absences: 300,
+    sss: 2025,
+    philhealth: 1080,
+    pagIbig: 150,
+    grossPay: 51650,
+    withholdingTax: 7748,
+    netPay: 39902
+  },
+  {
+    employeeId: "007",
+    employeeName: "Mark Reyes",
+    department: "IT",
+    jobRole: "System Administrator",
+    initialPay: 58000,
+    holidayPay: 2900,
+    overtimePay: 1400,
+    bonuses: 6000,
+    tardiness: 100,
+    absences: 0,
+    sss: 2610,
+    philhealth: 1392,
+    pagIbig: 150,
+    grossPay: 68200,
+    withholdingTax: 10230,
+    netPay: 54968
+  },
+  {
+    employeeId: "008",
+    employeeName: "Jenny Lim",
+    department: "Marketing",
+    jobRole: "Marketing Specialist",
+    initialPay: 47000,
+    holidayPay: 2350,
+    overtimePay: 1100,
+    bonuses: 4200,
+    tardiness: 150,
+    absences: 200,
+    sss: 2115,
+    philhealth: 1128,
+    pagIbig: 150,
+    grossPay: 54800,
+    withholdingTax: 8220,
+    netPay: 44452
+  },
+  {
+    employeeId: "009",
+    employeeName: "Chris Tan",
+    department: "Logistics",
+    jobRole: "Logistics Coordinator",
+    initialPay: 52000,
+    holidayPay: 2600,
+    overtimePay: 1300,
+    bonuses: 4800,
+    tardiness: 0,
+    absences: 350,
+    sss: 2340,
+    philhealth: 1248,
+    pagIbig: 150,
+    grossPay: 60350,
+    withholdingTax: 9053,
+    netPay: 47709
+  },
+  {
+    employeeId: "010",
+    employeeName: "Paolo Mendoza",
+    department: "Engineering",
+    jobRole: "Software Engineer",
+    initialPay: 65000,
+    holidayPay: 3250,
+    overtimePay: 1700,
+    bonuses: 9000,
+    tardiness: 0,
+    absences: 0,
+    sss: 2925,
+    philhealth: 1560,
+    pagIbig: 150,
+    grossPay: 78950,
+    withholdingTax: 11843,
+    netPay: 62597
   }
 ];
