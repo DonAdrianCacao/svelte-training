@@ -83,13 +83,13 @@
 
 </script>
 
-<div class="w-full p-2">
+<div class="w-full p-4">
   <!-- Top Controls -->
-  <div class="flex flex-col gap-4 mb-4">
+  <div class="flex flex-col gap-1 mb-4">
     <!-- Back Button -->
     <div class="w-full p-1">
       <button
-        class="flex items-center gap-1 text-[#4F47E4] font-semibold text-base hover:underline group"
+        class="flex items-center gap-1 text-[#4F47E4] font-semibold text-base hover:underline group inline-flex"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -107,26 +107,27 @@
         </svg>
         Back
       </button>
+      <span class="font-bold ml-4 text-xl">ADRIAN AND RALPH'S SVELTE JOURNEY CORP</span>
     </div>
 
     <!-- Toolbar Buttons -->
     <div class="flex items-center gap-3">
       <!-- Menu Button -->
       <button
-        class="px-4 py-2 text-sm font-medium bg-[#4F47E4] text-white rounded-full hover:bg-[#3f38c9]"
+        class="px-2.5 py-2.5 text-sm font-medium bg-[#4F47E4] text-white rounded-full hover:bg-[#3f38c9]"
       >
         ☰
       </button>
 
       <!-- Sort Button -->
       <button
-        class="px-4 py-2 text-sm font-medium bg-[#4F47E4] text-white rounded-full hover:bg-[#3f38c9]"
+        class="px-2.5 py-2.5 text-sm font-medium bg-[#4F47E4] text-white rounded-full hover:bg-[#3f38c9]"
       >
         ↑↓
       </button>
 
       <!-- Search input -->
-      <div class="relative w-[260px]">
+      <div class="relative w-[270px]">
         <!-- Search Icon -->
         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
           <svg
